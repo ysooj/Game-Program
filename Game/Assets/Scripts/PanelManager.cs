@@ -4,6 +4,7 @@ using UnityEngine;
 public enum Panel
 {
     Error,
+    Subscribe,
 }
 
 public class PanelManager : MonoBehaviour
@@ -45,8 +46,8 @@ public class PanelManager : MonoBehaviour
         else
         {
             clone = dictionary[panel];
-        }
 
-        //clone.SetActive(true);
+            clone.SetActive(true);
+        }
     }
 }

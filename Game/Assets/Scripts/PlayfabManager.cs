@@ -60,6 +60,11 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
         );
     }
 
+    public void Subscribe()
+    {
+        PanelManager.Instance.Load(Panel.Subscribe, null);
+    }
+
     // 로그인이 실패했을 때 호출되는 함수
     public void Failure(PlayFabError playFabError)
     {
