@@ -30,8 +30,7 @@ public class SubscribePanel : MonoBehaviourPunCallbacks
 
     public void Success(RegisterPlayFabUserResult registerPlayFabUserResult)
     {
-        Debug.Log(registerPlayFabUserResult.Username);
-        Debug.Log("Subscribed Successfully");
+        gameObject.SetActive(false);
     }
 
     public void Failure(PlayFabError playFabError)
