@@ -39,6 +39,8 @@ public class PanelManager : MonoBehaviour
         {
             clone = (GameObject)Instantiate(Resources.Load(panel.ToString()));
 
+            clone.name = clone.name.Replace("(Clone)", "");
+
             dictionary.Add(panel, clone);
         }
 
