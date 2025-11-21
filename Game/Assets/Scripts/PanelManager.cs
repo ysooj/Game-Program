@@ -25,7 +25,6 @@ public class PanelManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
 
         DontDestroyOnLoad(gameObject);
@@ -48,8 +47,13 @@ public class PanelManager : MonoBehaviour
         else
         {
             clone = dictionary[panel];
+        }
 
-            clone.SetActive(true);
+        clone.SetActive(true);
+
+        if (clone.GetComponent<ErrorPanel>() == true)
+        {
+            clone.GetComponent<ErrorPanel>().SetText(message);
         }
     }
 }

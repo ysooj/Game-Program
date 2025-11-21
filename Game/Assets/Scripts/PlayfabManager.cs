@@ -68,8 +68,16 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     // 로그인이 실패했을 때 호출되는 함수
     public void Failure(PlayFabError playFabError)
     {
-        //Debug.Log(playFabError.GenerateErrorReport());
+        var report = playFabError.GenerateErrorReport();
 
-        PanelManager.Instance.Load(Panel.Error, playFabError.GenerateErrorReport());
+        var lines = report.Split("\n");
+
+        switch (lines.Length)
+        {
+            case 4: PanelManager.Instance.Load(Panel.Error, $"{lines[2]} \n\n {lines[3]}");
+                break;
+            case 5: PanelManager.Instance.Load(Panel.Error, $"{lines[2]} \n\n {lines[3]} \n\n {lines[4]}");
+                break;
+        }
     }
 }
