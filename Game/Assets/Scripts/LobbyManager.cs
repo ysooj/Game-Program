@@ -8,6 +8,20 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] Dictionary<string, GameObject> dictionary = new();
     [SerializeField] Transform parentTransform;
 
+    public override void OnConnectedToMaster()
+    {
+        // JoinLobby() : 특정 로비를 생성하여 진입하는 함수
+        if (PhotonNetwork.InLobby == false)
+        {
+            PhotonNetwork.JoinLobby();
+        }
+    }
+
+    public void GeneratorRoom()
+    {
+        PanelManager.Instance.Load(Panel.Generator, null);
+    }
+
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Game");

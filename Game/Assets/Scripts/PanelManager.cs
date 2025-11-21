@@ -5,6 +5,7 @@ public enum Panel
 {
     Error,
     Subscribe,
+    Generator,
 }
 
 public class PanelManager : MonoBehaviour
