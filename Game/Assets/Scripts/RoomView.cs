@@ -3,7 +3,7 @@ using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoomView : MonoBehaviour
+public class RoomView : MonoBehaviourPunCallbacks
 {
     [SerializeField] Text roomText;
     [SerializeField] string titleText;
@@ -11,6 +11,11 @@ public class RoomView : MonoBehaviour
     public void OnConnectRoom()
     {
         PhotonNetwork.JoinRoom(titleText);
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        PanelManager.Instance.Load(Panel.Error, message);
     }
 
     //public void UpdateRoomInformation(string roomTitle, int currentPlayer, int maxPlayer)
@@ -27,6 +32,4 @@ public class RoomView : MonoBehaviour
         // 출력 : 방의 제목 ( 현재 인원 / 최대 인원 )
         //roomText.text = $"{roomTitle} ( {currentPlayer} / {maxPlayer} )";
     }
-
-    
 }

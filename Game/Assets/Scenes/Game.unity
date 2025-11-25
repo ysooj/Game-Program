@@ -158,7 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46e916e032ca8a49ae4e5f72f25b52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
+  list: []
+  transforms: []
 --- !u!4 &119512245
 Transform:
   m_ObjectHideFlags: 0
@@ -392,7 +393,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3915094, g: 0.3915094, b: 0.3915094, a: 0}
+  m_BackGroundColor: {r: 0.15294118, g: 0.16078432, b: 0.15686275, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
