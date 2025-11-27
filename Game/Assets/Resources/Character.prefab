@@ -528,6 +528,8 @@ GameObject:
   - component: {fileID: 5298377550331887272}
   - component: {fileID: 1405620980911776419}
   - component: {fileID: 5554528272709049340}
+  - component: {fileID: 8759844196412397387}
+  - component: {fileID: 6073325004796950327}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -653,6 +655,35 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &8759844196412397387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688020618235135234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a771ec2719f254cab0058d1d96312b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: {fileID: 6073325004796950327}
+  minimumAngle: -65
+  maximumAngle: 65
+--- !u!114 &6073325004796950327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2688020618235135234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83faaeb77d91e324a9c0a0e098d3a513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 150
+  axis: 0
 --- !u!1 &3311436509942234974
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +783,7 @@ GameObject:
   - component: {fileID: 7639697327530822653}
   - component: {fileID: 7228326579820255496}
   - component: {fileID: 6370984652703727851}
+  - component: {fileID: 5041483461706420145}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -853,6 +885,8 @@ MonoBehaviour:
   characterController: {fileID: 0}
   speed: 5
   direction: {x: 0, y: 0, z: 0}
+  rotation: {fileID: 5041483461706420145}
+  head: {fileID: 0}
 --- !u!143 &6370984652703727851
 CharacterController:
   m_ObjectHideFlags: 0
@@ -878,6 +912,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.135, z: -0.0075}
+--- !u!114 &5041483461706420145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380025235750522963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83faaeb77d91e324a9c0a0e098d3a513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  axis: 1
 --- !u!1 &3442186158588529788
 GameObject:
   m_ObjectHideFlags: 0

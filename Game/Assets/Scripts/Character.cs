@@ -10,9 +10,13 @@ public class Character : MonoBehaviourPun
     [SerializeField] float speed;
     [SerializeField] Vector3 direction;
 
+    [SerializeField] Rotation rotation;
+    [SerializeField] Head head;
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        rotation = GetComponent<Rotation>();
     }
 
     void Start()
@@ -27,6 +31,8 @@ public class Character : MonoBehaviourPun
             Control();
 
             Move();
+
+            rotation.RotateY();
         }
     }
 
@@ -54,7 +60,7 @@ public class Character : MonoBehaviourPun
 
     public void Move()
     {
-        characterController.Move(direction * speed * Time.deltaTime);
+        characterController.Move(characterController.transform.TransformDirection(direction) * speed * Time.deltaTime);
     }
 }
 
