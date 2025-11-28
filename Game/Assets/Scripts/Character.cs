@@ -4,6 +4,8 @@ using UnityEditor.Experimental.GraphView;
 
 public class Character : MonoBehaviourPun
 {
+
+    [SerializeField] Mouse mouse;
     [SerializeField] Camera remoteCamera;
     [SerializeField] CharacterController characterController;
 
@@ -15,12 +17,15 @@ public class Character : MonoBehaviourPun
 
     void Awake()
     {
+        mouse = GetComponent<Mouse>();
         characterController = GetComponent<CharacterController>();
         rotation = GetComponent<Rotation>();
     }
 
     void Start()
     {
+        mouse.SetMouse(false);
+
         DisableCamera();
     }
 
