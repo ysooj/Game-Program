@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] GameObject talkPrefab;
 
+    [SerializeField] Character character;
+
     void Start()
     {
         talkPrefab = Resources.Load<GameObject>("Talk");
@@ -23,16 +25,29 @@ public class DialogueManager : MonoBehaviour
         {
             SendChatting();
         }
+
+        character.canControl = !inputField.isFocused;
     }
 
     public void SendChatting()
     {
-        string message = inputField.text;
+        if (string.IsNullOrWhiteSpace(inputField.text))
+        {
+            return;
+        }
 
         GameObject talk = Instantiate(talkPrefab, content);
 
         Text text = talk.GetComponentInChildren<Text>();
-        text.text = message;
+
+        if (text == null)
+        {
+            Debug.LogError("Text component not found in talk prefab.");
+            Destroy(talk);
+            return;
+        }
+
+        text.text = inputField.text;
 
         inputField.text = string.Empty;
 

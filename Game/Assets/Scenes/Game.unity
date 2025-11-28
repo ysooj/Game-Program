@@ -2546,8 +2546,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 843635888}
   content: {fileID: 1915061608}
-  scrollRect: {fileID: 0}
+  scrollRect: {fileID: 63783347}
   talkPrefab: {fileID: 0}
+  character: {fileID: 7228326579820255496, guid: ef8616dcc094ef94996c2dea6b938941, type: 3}
 --- !u!4 &2111282806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3398929550679459920, guid: 0bc6c71ad06352145b94e358c68dd857, type: 3}

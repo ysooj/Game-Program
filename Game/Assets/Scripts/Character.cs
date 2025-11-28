@@ -1,6 +1,8 @@
-using UnityEngine;
 using Photon.Pun;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Character : MonoBehaviourPun
 {
@@ -15,8 +17,11 @@ public class Character : MonoBehaviourPun
     [SerializeField] Rotation rotation;
     [SerializeField] Head head;
 
+    [SerializeField] public bool canControl;
+
     void Awake()
     {
+        canControl = true;
         mouse = GetComponent<Mouse>();
         characterController = GetComponent<CharacterController>();
         rotation = GetComponent<Rotation>();
@@ -31,6 +36,11 @@ public class Character : MonoBehaviourPun
 
     void Update()
     {
+        if (!canControl)
+        {
+            return;
+        }
+
         if (photonView.IsMine)
         {
             Control();
