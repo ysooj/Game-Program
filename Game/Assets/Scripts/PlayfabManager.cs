@@ -18,7 +18,22 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.GameVersion = "1.0f";
 
-        StartCoroutine(Connect());
+        PlayFabClientAPI.GetAccountInfo
+        (
+            new GetAccountInfoRequest(),
+            result =>
+            {
+                string username = result.AccountInfo.Username;  // Username 가져오기
+                PhotonNetwork.NickName = username;
+
+                StartCoroutine(Connect());
+            },
+            error =>
+            {
+                PhotonNetwork.NickName = "Player";
+                StartCoroutine(Connect());
+            }
+        );
     }
 
     // 로비에 접속했을 때 호출되는 함수
