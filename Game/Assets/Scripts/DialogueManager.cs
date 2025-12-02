@@ -22,11 +22,12 @@ public class DialogueManager : MonoBehaviourPunCallbacks
             //GameObject talk = Instantiate(Resources.Load<GameObject>("Talk"), parentTransform);
             //talk.GetComponent<Text>().text = inputField.text;
 
-            string talk = inputField.text;
-            string nickname = PhotonNetwork.LocalPlayer.NickName;
+            // string talk = inputField.text;
+            string talk = PhotonNetwork.LocalPlayer.NickName + " : " + inputField.text;
+            // string nickname = PhotonNetwork.LocalPlayer.NickName;
 
             // RPC Target.All : 현재 룸에 있는 모든 클라이언트에게 Talk() 함수를 실행하라는 명령을 전달합니다.
-            photonView.RPC("Send", RpcTarget.All, nickname, talk);
+            photonView.RPC("Send", RpcTarget.All, talk);
 
             // inputField의 텍스트를 초기화합니다.
             inputField.text = "";
@@ -37,13 +38,13 @@ public class DialogueManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]    // 원격 호출 메서드
-    public void Send (string sender, string message)
+    public void Send (string message)
     {
         // prefab을 하나 생성한 다음 text에 값을 설정합니다.
-        GameObject talk = Instantiate(Resources.Load<GameObject>("Talk"), parentTransform);
+        GameObject talk = Instantiate(Resources.Load<GameObject>("Talk"));
 
         // prefab 오브젝트의 Text 컴포넌트로 접근해서 text의 값을 설정합니다.
-        talk.GetComponent<Text>().text = $" {sender} : {message}";
+        talk.GetComponent<Text>().text = message;
 
         // 스크롤 뷰 - content 오브젝트의 자식으로 등록합니다.
         talk.transform.SetParent(parentTransform);

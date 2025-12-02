@@ -14,26 +14,18 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     // 로그인이 성공했을 때 호출되는 함수
     public void Success(LoginResult loginResult)
     {
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(), Success, Failure);
+
         PhotonNetwork.AutomaticallySyncScene = false;
 
         PhotonNetwork.GameVersion = "1.0f";
 
-        PlayFabClientAPI.GetAccountInfo
-        (
-            new GetAccountInfoRequest(),
-            result =>
-            {
-                string username = result.AccountInfo.Username;  // Username 가져오기
-                PhotonNetwork.NickName = username;
+        StartCoroutine(Connect());
+    }
 
-                StartCoroutine(Connect());
-            },
-            error =>
-            {
-                PhotonNetwork.NickName = "Player";
-                StartCoroutine(Connect());
-            }
-        );
+    public void Success(GetAccountInfoResult getAccountInfoResult)
+    {
+        PhotonNetwork.LocalPlayer.NickName = getAccountInfoResult.AccountInfo?.Username;
     }
 
     // 로비에 접속했을 때 호출되는 함수
