@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class Character : MonoBehaviourPun
 {
 
-    [SerializeField] Mouse mouse;
     [SerializeField] Camera remoteCamera;
     [SerializeField] CharacterController characterController;
 
@@ -22,15 +21,12 @@ public class Character : MonoBehaviourPun
     void Awake()
     {
         canControl = true;
-        mouse = GetComponent<Mouse>();
         characterController = GetComponent<CharacterController>();
         rotation = GetComponent<Rotation>();
     }
 
     void Start()
     {
-        mouse.SetMouse(false);
-
         DisableCamera();
     }
 
@@ -43,6 +39,13 @@ public class Character : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                MouseManager.Instance.SetMouse(true);
+
+                PanelManager.Instance.Load(Panel.Pause, null);
+            }
+
             Control();
 
             Move();
