@@ -43,3 +43,20 @@ public class MasterManager : MonoBehaviourPunCallbacks
         restartSpawn();
     }
 }
+
+//  °­»ç´Ô ÄÚµå
+//  public IEnumerator Start()
+//  {
+//      if (PhotonNetwork.IsMasterClient)
+//      {
+//          while (true)
+//          {
+//              if (PhotonNetwork.CurrentRoom != null)
+//              {
+//                  PhotonNetwork.InstantiateRoomObject("Ball", Vector3.zero, Quaternion.identity);
+//              }
+//  
+//              yield return waitForSeconds;
+//          }
+//      }
+//  }

@@ -43,6 +43,8 @@ public class PanelManager : MonoBehaviour
             clone.name = clone.name.Replace("(Clone)", "");
 
             dictionary.Add(panel, clone);
+
+            DontDestroyOnLoad(clone);
         }
 
         // 이미 key가 있을 경우. 즉 패널이 존재할 경우
